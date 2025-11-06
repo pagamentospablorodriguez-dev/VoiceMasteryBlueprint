@@ -384,7 +384,7 @@ export default function LandingPage() {
                 <span className="text-yellow-400 text-3xl">★★★★★</span>
               </div>
               <p className="text-2xl md:text-3xl text-white mb-6 font-bold text-center leading-relaxed">
-                "I watched your Voice compilations every day. Dreamed about singing like them. Never thought I actually COULD. This blueprint proved me wrong. Now I'm the one getting compliments."
+                "I watched your The Voice compilations every day. Dreamed about singing like them. Never thought I actually COULD. This blueprint proved me wrong. Now I'm the one getting compliments."
               </p>
               <p className="font-bold text-xl text-center">Marcus T.</p>
               <p className="text-center text-green-400 font-semibold">UK • From viewer to performer in 21 days</p>
