@@ -470,7 +470,7 @@ export default function LandingPage() {
                 <div className="text-center mb-8">
                   <p className="text-gray-400 text-2xl mb-3">Special Price Today:</p>
                   <div className="inline-block bg-gradient-to-r from-green-600 to-blue-600 p-2 rounded-3xl mb-4">
-                    <p className="text-8xl font-black text-white px-6">$29.90</p>
+                    <p className="text-4xl font-black text-white px-6">$29.90</p>
                   </div>
                   <div className="inline-block bg-red-600 text-white px-10 py-5 rounded-full text-3xl font-black mb-6 pulse-animation">
                     SAVE 96% TODAY ONLY
