@@ -329,8 +329,6 @@ const handlePurchase = () => {
 
               <div className="mt-8 pt-8 border-t border-gray-700">
                 <p className="text-lg text-gray-400 mb-4">💳 Pay once. Learn forever.</p>
-                <p className="text-lg text-green-400 font-bold">OR split into 4 payments of $7.48/month</p>
-                <p className="text-sm text-gray-500 mt-2">(No interest. No fees. Cancel anytime.)</p>
               </div>
             </div>
           </div>
@@ -476,8 +474,6 @@ const handlePurchase = () => {
                 <br /><div className="inline-block bg-red-600 text-white px-10 py-5 rounded-full text-3xl font-black mb-6 pulse-animation">
                     SAVE 96% TODAY ONLY
                   </div>
-                  <p className="text-green-400 text-xl font-bold mb-4">💳 Or 4 easy payments of $7.48/month</p>
-                  <p className="text-gray-400 text-sm">(Zero interest • No hidden fees)</p>
                 </div>
 
                 <div className="space-y-4 mb-10">
@@ -532,7 +528,7 @@ const handlePurchase = () => {
                 <span className="text-lg">💳 Visa</span>
                 <span className="text-lg">💳 Mastercard</span>
                 <span className="text-lg">💳 Amex</span>
-                <span className="text-lg">💰 PayPal</span>
+                <span className="text-lg">💰 Apple Pay</span>
               </div>
             </div>
           </div>
@@ -562,7 +558,7 @@ const handlePurchase = () => {
               <div className="bg-black p-8 rounded-2xl border border-gray-800 hover:border-green-500 transition-colors">
                 <h3 className="text-2xl font-bold mb-4">❓ Is this a subscription? Will I be charged monthly?</h3>
                 <p className="text-gray-300 text-lg leading-relaxed">
-                  NO! One payment. $29.90 total. That's it. Lifetime access. No hidden fees, no recurring charges. Pay once, learn forever. (Payment plan option available if you prefer to split it.)
+                  NO! One payment. $29.90 total. That's it. Lifetime access. No hidden fees, no recurring charges. Pay once, learn forever.
                 </p>
               </div>
 
