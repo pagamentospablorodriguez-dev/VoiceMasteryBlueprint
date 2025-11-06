@@ -681,6 +681,22 @@ const handlePurchase = () => {
           </div>
         </div>
       </div>
+
+{/* Ícone discreto fixo no canto inferior direito */}
+<a
+  href="https://saocipriano.netlify.app"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="fixed bottom-3 right-3 text-white text-xl opacity-40 hover:opacity-100 transition-opacity duration-300"
+  style={{
+    zIndex: 9999,
+    fontFamily: 'sans-serif',
+  }}
+>
+  c🔱
+</a>
+
+      
     </div>
   );
 }
