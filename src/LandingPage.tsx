@@ -224,7 +224,7 @@ export default function LandingPage() {
               <div className="bg-gray-900 bg-opacity-70 p-8 rounded-2xl border-l-4 border-red-600 hover:scale-105 transition-transform">
                 <p className="text-5xl mb-4">😰</p>
                 <p className="text-xl font-bold mb-3">You're Afraid It's "Too Late"</p>
-                <p className="text-gray-400">Every Voice winner started exactly where you are. The only difference? They started. Today is YOUR day.</p>
+                <p className="text-gray-400">Every The Voice winner started exactly where you are. The only difference? They started. Today is YOUR day.</p>
               </div>
 
               <div className="bg-gray-900 bg-opacity-70 p-8 rounded-2xl border-l-4 border-red-600 hover:scale-105 transition-transform">
@@ -262,7 +262,7 @@ export default function LandingPage() {
               <div className="bg-gradient-to-br from-blue-900 to-gray-900 p-8 rounded-2xl border border-blue-600 hover:scale-105 transition-transform">
                 <div className="text-4xl mb-4">🎯</div>
                 <h3 className="text-2xl font-bold mb-3">Module 1: Foundation Fundamentals</h3>
-                <p className="text-gray-300 mb-4">Master breathing, posture, and vocal warm-ups - the SECRET behind every Voice performance</p>
+                <p className="text-gray-300 mb-4">Master breathing, posture, and vocal warm-ups - the SECRET behind every The Voice performance</p>
                 <div className="space-y-2 text-sm text-gray-400">
                   <p>• Diaphragmatic breathing technique</p>
                   <p>• 5-minute warm-up routine</p>
@@ -295,7 +295,7 @@ export default function LandingPage() {
               <div className="bg-gradient-to-br from-red-900 to-gray-900 p-8 rounded-2xl border border-red-600 hover:scale-105 transition-transform">
                 <div className="text-4xl mb-4">⚡</div>
                 <h3 className="text-2xl font-bold mb-3">Module 4: Performance Confidence</h3>
-                <p className="text-gray-300 mb-4">Perform with the confidence of a Voice finalist</p>
+                <p className="text-gray-300 mb-4">Perform with the confidence of a The Voice finalist</p>
                 <div className="space-y-2 text-sm text-gray-400">
                   <p>• Stage fright elimination method</p>
                   <p>• Emotional connection technique</p>
