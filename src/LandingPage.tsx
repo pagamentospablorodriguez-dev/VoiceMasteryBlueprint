@@ -41,9 +41,10 @@ export default function LandingPage() {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handlePurchase = () => {
-    alert('PAYMENT INTEGRATION NEEDED:\n\nConnect to Stripe, PayPal, or Gumroad to process payments.\n\nThis button would redirect to your payment processor with the $29.90 product.');
-  };
+const handlePurchase = () => {
+  window.location.href = "https://buy.stripe.com/fZuaEX1MZbvI8N5bUzb7y03";
+};
+
 
   return (
     <div className="bg-black text-white relative">
