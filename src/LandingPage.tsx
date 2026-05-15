@@ -733,16 +733,7 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* Discrete icon */}
-      <a
-        href="https://saocipriano.netlify.app"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-3 right-3 text-white opacity-30 hover:opacity-80 transition-opacity duration-300"
-        style={{ zIndex: 9999, fontFamily: 'sans-serif', fontSize: 12 }}
-      >
-        c🔱
-      </a>
+    
     </div>
   );
 }
