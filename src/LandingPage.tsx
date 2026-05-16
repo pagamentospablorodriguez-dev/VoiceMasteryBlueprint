@@ -1,10 +1,12 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocale } from './i18n';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function LandingPage() {
   const [countdown, setCountdown] = useState({ minutes: 14, seconds: 58 });
   const [showExitPopup, setShowExitPopup] = useState(false);
   const [spotsLeft, setSpotsLeft] = useState(47);
-  const [activeTab, setActiveTab] = useState(0);
+  const { locale, changeLocale, t, interpolate } = useLocale();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -22,7 +24,6 @@ export default function LandingPage() {
     };
     document.addEventListener('mouseleave', handleMouseLeave);
 
-    // Simulate spots decreasing
     const spotsTimer = setInterval(() => {
       setSpotsLeft(prev => prev > 31 ? prev - 1 : prev);
     }, 45000);
@@ -45,48 +46,12 @@ export default function LandingPage() {
   };
 
   const testimonials = [
-    {
-      name: "Sarah M.",
-      location: "USA",
-      time: "3 weeks",
-      text: "I hit a note that made my husband drop his phone and stare at me. I literally started crying. I've wanted this my entire life.",
-      emoji: "🇺🇸"
-    },
-    {
-      name: "Carlos R.",
-      location: "Spain",
-      time: "21 days",
-      text: "Sang at my sister's wedding. People stopped eating. The room went silent. Then everyone stood up. I will never forget that moment.",
-      emoji: "🇪🇸"
-    },
-    {
-      name: "Priya K.",
-      location: "India",
-      time: "6 weeks",
-      text: "I'm 47. I thought this was impossible for me. Module 2 alone was worth 100x the price. BEST decision I've ever made.",
-      emoji: "🇮🇳"
-    },
-    {
-      name: "Marcus T.",
-      location: "UK",
-      time: "21 days",
-      text: "I watched The Voice compilations every single day for 3 years wishing I could sing like them. Now people send ME videos asking how I do it.",
-      emoji: "🇬🇧"
-    },
-    {
-      name: "Yuki S.",
-      location: "Japan",
-      time: "4 weeks",
-      text: "My coworkers thought I was a professional. I had to show them the before video to prove I was a complete beginner just one month ago.",
-      emoji: "🇯🇵"
-    },
-    {
-      name: "Luisa M.",
-      location: "Mexico",
-      time: "2 weeks",
-      text: "Week 2 and I'm already hitting notes I've never hit in my life. My family thinks I'm secretly taking lessons. This blueprint IS the lesson.",
-      emoji: "🇲🇽"
-    },
+    { name: t.t1Name, location: t.t1Location, text: t.t1Text, emoji: "🇺🇸" },
+    { name: t.t2Name, location: t.t2Location, text: t.t2Text, emoji: "🇪🇸" },
+    { name: t.t3Name, location: t.t3Location, text: t.t3Text, emoji: "🇮🇳" },
+    { name: t.t4Name, location: t.t4Location, text: t.t4Text, emoji: "🇬🇧" },
+    { name: t.t5Name, location: t.t5Location, text: t.t5Text, emoji: "🇯🇵" },
+    { name: t.t6Name, location: t.t6Location, text: t.t6Text, emoji: "🇲🇽" },
   ];
 
   return (
@@ -314,25 +279,25 @@ export default function LandingPage() {
       {showExitPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4">
           <div className="max-w-lg w-full relative" style={{ background: 'linear-gradient(135deg, #1a0a00, #0d0d0d)', border: '2px solid #F5C842', borderRadius: 24, padding: 48 }}>
-            <button onClick={() => setShowExitPopup(false)} className="absolute top-4 right-5 text-gray-500 text-2xl hover:text-white transition-colors">×</button>
+            <button onClick={() => setShowExitPopup(false)} className="absolute top-4 right-5 text-gray-500 text-2xl hover:text-white transition-colors">&times;</button>
             <div className="text-center">
               <p className="text-5xl mb-4">🎤</p>
-              <p className="text-sm font-bold uppercase tracking-widest text-yellow-400 mb-3">Wait — One Last Thing</p>
-              <h3 className="text-3xl font-black mb-4 leading-tight">Take An Extra $10 Off Before You Go</h3>
-              <p className="text-gray-400 mb-6 leading-relaxed">You're this close to something that can change your life. Use this code and get the entire blueprint for just:</p>
+              <p className="text-sm font-bold uppercase tracking-widest text-yellow-400 mb-3">{t.exitLabel}</p>
+              <h3 className="text-3xl font-black mb-4 leading-tight">{t.exitH3}</h3>
+              <p className="text-gray-400 mb-6 leading-relaxed">{t.exitP}</p>
               <div className="bg-black rounded-xl p-4 mb-4">
-                <p className="text-gray-400 text-sm mb-1">Discount code</p>
+                <p className="text-gray-400 text-sm mb-1">{t.exitCodeLabel}</p>
                 <p className="text-3xl font-black text-white tracking-widest">VOICE10</p>
               </div>
-              <p className="text-5xl font-black gold-gradient mb-2">$19.90</p>
-              <p className="text-gray-500 text-sm mb-6">97% off. One payment. Lifetime access.</p>
+              <p className="text-5xl font-black gold-gradient mb-2">{t.exitPrice}</p>
+              <p className="text-gray-500 text-sm mb-6">{t.exitSub}</p>
               <button
                 onClick={() => { setShowExitPopup(false); scrollToPricing(); }}
                 className="btn-gold w-full text-xl font-black py-5 px-8 rounded-2xl"
               >
-                Claim My $19.90 Deal →
+                {t.exitCta}
               </button>
-              <p className="text-xs text-gray-600 mt-4">This offer disappears when you close this popup</p>
+              <p className="text-xs text-gray-600 mt-4">{t.exitDisclaimer}</p>
             </div>
           </div>
         </div>
@@ -342,7 +307,7 @@ export default function LandingPage() {
       <div className="fixed top-0 w-full z-40 sticky-bar">
         <div className="py-3 px-4 text-center" style={{ background: 'linear-gradient(90deg, #FF3D3D, #FF6B00)' }}>
           <p className="text-sm font-bold text-white">
-            🔥 LAUNCH OFFER ENDS IN <span className="font-mono font-black">{timeString}</span> — After that, price doubles forever.
+            🔥 {interpolate(t.urgencyBar, { timer: timeString })}
           </p>
         </div>
       </div>
@@ -352,60 +317,65 @@ export default function LandingPage() {
         {/* ═══════════════════════════════════════ HERO ═══════════════════════════════════════ */}
         <div className="spotlight noise relative">
           <div className="max-w-5xl mx-auto px-5 py-20 md:py-32 text-center">
+            {/* Language Switcher - top right */}
+            <div className="absolute top-4 right-5 z-10">
+              <LanguageSwitcher locale={locale} onChange={changeLocale} />
+            </div>
+
             <div className="slide-up" style={{ animationDelay: '0s' }}>
-              <div className="badge mb-6">⭐ 47,000+ students • 127 countries • 4.9/5 stars</div>
+              <div className="badge mb-6">⭐ {t.badge}</div>
             </div>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-[1.05] slide-up" style={{ animationDelay: '0.1s' }}>
-              You've Watched Thousands<br />of Great Voices.<br />
-              <span className="hero-gradient">Now It's Your Turn.</span>
+              {t.heroH1L1}<br />{t.heroH1L2}<br />
+              <span className="hero-gradient">{t.heroH1Highlight}</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed slide-up" style={{ animationDelay: '0.2s' }}>
-              The same vocal techniques behind the performances you can't stop rewatching — <span className="text-white font-semibold">now compressed into a 21-day blueprint</span> that works even if you've never sung a single note.
+              {t.heroSub} <span className="text-white font-semibold">{t.heroSubHighlight}</span>
             </p>
 
             {/* Social proof bar */}
             <div className="flex flex-wrap justify-center gap-6 mb-12 slide-up" style={{ animationDelay: '0.3s' }}>
               <div className="flex items-center gap-2">
                 <span className="micro-stars">★★★★★</span>
-                <span className="text-gray-400 text-sm">4.9/5 rating</span>
+                <span className="text-gray-400 text-sm">{t.rating}</span>
               </div>
               <div className="text-gray-700">|</div>
-              <div className="text-gray-400 text-sm">✓ 89% see results in 7 days</div>
+              <div className="text-gray-400 text-sm">✓ {t.results7days}</div>
               <div className="text-gray-700">|</div>
-              <div className="text-gray-400 text-sm">✓ 30-day money-back guarantee</div>
+              <div className="text-gray-400 text-sm">✓ {t.moneyBack}</div>
               <div className="text-gray-700">|</div>
-              <div className="text-gray-400 text-sm">✓ Instant access</div>
+              <div className="text-gray-400 text-sm">✓ {t.instantAccess}</div>
             </div>
 
             {/* Before/After Visual */}
             <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto mb-12 slide-up" style={{ animationDelay: '0.35s' }}>
               <div className="p-6 rounded-2xl text-left" style={{ background: 'rgba(255,61,61,0.06)', border: '1px solid rgba(255,61,61,0.2)' }}>
-                <p className="text-xs font-bold uppercase tracking-widest text-red-400 mb-4">Right now</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-red-400 mb-4">{t.beforeLabel}</p>
                 <div className="space-y-3 text-gray-400">
-                  <p>😔 Watching others get the standing ovations</p>
-                  <p>😔 Voice cracks the moment it matters most</p>
-                  <p>😔 "Maybe I'm just not a singer"</p>
-                  <p>😔 Another year of "I wish I could sing"</p>
+                  <p>😔 {t.before1}</p>
+                  <p>😔 {t.before2}</p>
+                  <p>😔 {t.before3}</p>
+                  <p>😔 {t.before4}</p>
                 </div>
               </div>
               <div className="p-6 rounded-2xl text-left" style={{ background: 'rgba(0,229,135,0.06)', border: '1px solid rgba(0,229,135,0.2)' }}>
-                <p className="text-xs font-bold uppercase tracking-widest text-green-400 mb-4">In 21 days</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-green-400 mb-4">{t.afterLabel}</p>
                 <div className="space-y-3 text-white">
-                  <p>✦ Performing songs that used to feel impossible</p>
-                  <p>✦ Hitting high notes cleanly, every time</p>
-                  <p>✦ "Where did you learn to sing like that?"</p>
-                  <p>✦ Being the person others can't stop watching</p>
+                  <p>✦ {t.after1}</p>
+                  <p>✦ {t.after2}</p>
+                  <p>✦ {t.after3}</p>
+                  <p>✦ {t.after4}</p>
                 </div>
               </div>
             </div>
 
             <button onClick={scrollToPricing} className="btn-gold text-xl md:text-2xl font-black py-6 px-14 rounded-2xl inline-block pulse mb-4">
-              🎤 YES — I Want To Sing Like That →
+              🎤 {t.heroCta}
             </button>
             <br />
-            <span className="text-gray-600 text-sm">⚡ Instant access • No experience needed • Risk-free guarantee</span>
+            <span className="text-gray-600 text-sm">⚡ {t.heroSubCta}</span>
           </div>
         </div>
 
@@ -413,23 +383,23 @@ export default function LandingPage() {
 
         {/* ═══════════════════════════════════════ THE HOOK ═══════════════════════════════════════ */}
         <div className="max-w-4xl mx-auto px-5 py-24 text-center">
-          <span className="section-label">The honest truth</span>
+          <span className="section-label">{t.hookLabel}</span>
           <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight">
-            The Singers You Watch Aren't<br />Born That Way. <span className="gold-gradient">They Were Taught.</span>
+            {t.hookH2L1}<br /><span className="gold-gradient">{t.hookH2Highlight}</span>
           </h2>
           <p className="text-xl text-gray-400 leading-relaxed mb-10 max-w-2xl mx-auto">
-            Every jaw-dropping performance you've rewatched — the goosebumps, the chair turns, the standing ovations — those voices were <strong className="text-white">trained</strong>. With techniques. With a system. The same system that's now available for the price of dinner.
+            {t.hookP} <strong className="text-white">{t.hookPStrong}</strong>. {locale === 'en' ? 'With techniques. With a system. The same system that\'s now available for the price of dinner.' : ''}
           </p>
           <div className="grid md:grid-cols-3 gap-6 text-left">
             {[
-              { n: "01", t: "It's not talent", d: "Research shows 98% of 'natural singers' trained privately before the world saw them. The myth of 'you either have it or you don't' is exactly that — a myth." },
-              { n: "02", t: "It's a trainable skill", d: "Your vocal cords are muscles. Like any muscle, they respond to the right training. The right exercises unlock range, control, and power in weeks — not years." },
-              { n: "03", t: "The blueprint exists", d: "Voice coaches charge $200/hour for these exact techniques. We compressed the entire curriculum into a step-by-step system anyone can follow from home." },
+              { n: "01", title: t.hook1Title, desc: t.hook1Desc },
+              { n: "02", title: t.hook2Title, desc: t.hook2Desc },
+              { n: "03", title: t.hook3Title, desc: t.hook3Desc },
             ].map(item => (
               <div key={item.n} className="card p-8">
                 <p className="text-5xl font-black gold-gradient mb-3">{item.n}</p>
-                <h3 className="text-xl font-bold mb-3">{item.t}</h3>
-                <p className="text-gray-400 leading-relaxed">{item.d}</p>
+                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                <p className="text-gray-400 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -440,40 +410,40 @@ export default function LandingPage() {
         {/* ═══════════════════════════════════════ WHAT YOU GET ═══════════════════════════════════════ */}
         <div className="max-w-5xl mx-auto px-5 py-24">
           <div className="text-center mb-16">
-            <span className="section-label">What's inside</span>
-            <h2 className="text-3xl md:text-5xl font-black mb-4">The Voice Mastery Blueprint</h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">4 precision-engineered modules. Everything you need. Nothing you don't.</p>
+            <span className="section-label">{t.insideLabel}</span>
+            <h2 className="text-3xl md:text-5xl font-black mb-4">{t.insideH2}</h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">{t.insideP}</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 mb-10">
             {[
               {
                 icon: "🎯",
-                num: "Module 1",
-                title: "Foundation & Breathing Mastery",
-                desc: "The #1 reason most people never improve: they skip the foundation. This module builds the physical base that makes everything else possible.",
-                points: ["Diaphragmatic breathing (the secret behind every powerful voice)", "5-minute warm-up that unlocks your full range", "Posture corrections that instantly improve tone quality"]
+                num: t.mod1Label,
+                title: t.mod1Title,
+                desc: t.mod1Desc,
+                points: [t.mod1P1, t.mod1P2, t.mod1P3]
               },
               {
                 icon: "🎼",
-                num: "Module 2",
-                title: "Pitch Perfect System",
-                desc: "Eliminate pitch issues for good. Hit every note — including the high ones — with precision and confidence.",
-                points: ["The 'ear-voice bridge' technique that fixes pitch in days", "High note mastery: access notes you thought were impossible", "Range expansion protocol: 1-2 octaves of new range in 21 days"]
+                num: t.mod2Label,
+                title: t.mod2Title,
+                desc: t.mod2Desc,
+                points: [t.mod2P1, t.mod2P2, t.mod2P3]
               },
               {
                 icon: "💎",
-                num: "Module 3",
-                title: "Your Signature Sound",
-                desc: "Find the voice that's uniquely, unforgettably yours. The one that makes people stop what they're doing.",
-                points: ["Tone shaping: craft the timbre that moves people", "Vibrato control: add the emotional layer that creates goosebumps", "Style & genre adaptation for any song you love"]
+                num: t.mod3Label,
+                title: t.mod3Title,
+                desc: t.mod3Desc,
+                points: [t.mod3P1, t.mod3P2, t.mod3P3]
               },
               {
                 icon: "🔥",
-                num: "Module 4",
-                title: "Performance & Stage Presence",
-                desc: "Technique is half the equation. The other half is performing it under pressure — with confidence that commands a room.",
-                points: ["Stage fright elimination: the 3-minute pre-performance reset", "Emotional connection technique (why some voices give chills)", "Presence training: own every room you walk into"]
+                num: t.mod4Label,
+                title: t.mod4Title,
+                desc: t.mod4Desc,
+                points: [t.mod4P1, t.mod4P2, t.mod4P3]
               }
             ].map(m => (
               <div key={m.num} className="module-card">
@@ -499,12 +469,12 @@ export default function LandingPage() {
 
           {/* Bonuses */}
           <div className="rounded-2xl p-8 md:p-12" style={{ background: 'linear-gradient(135deg, #0d0a00, #0d0d0d)', border: '1px solid rgba(245,200,66,0.2)' }}>
-            <p className="text-xs font-bold uppercase tracking-widest text-yellow-400 mb-2 text-center">Included free — today only</p>
-            <h3 className="text-2xl md:text-3xl font-black text-center mb-8">🎁 Your Exclusive Bonuses</h3>
+            <p className="text-xs font-bold uppercase tracking-widest text-yellow-400 mb-2 text-center">{t.bonusLabel}</p>
+            <h3 className="text-2xl md:text-3xl font-black text-center mb-8">🎁 {t.bonusH3}</h3>
             <div className="grid md:grid-cols-2 gap-6">
               {[
-                { title: "The Voice Song Vault", val: "$49 value", desc: "50 songs specifically chosen because they showcase vocal transformation — with exact technique notes on how to perform each one." },
-                { title: "21-Day Transformation Challenge", val: "$39 value", desc: "Daily video exercises that build momentum from day one. The exact daily sequence our top students follow to see results in 3 weeks." },
+                { title: t.bonus1Title, val: t.bonus1Val, desc: t.bonus1Desc },
+                { title: t.bonus2Title, val: t.bonus2Val, desc: t.bonus2Desc },
               ].map(b => (
                 <div key={b.title} className="p-6 rounded-xl" style={{ background: 'rgba(245,200,66,0.05)', border: '1px solid rgba(245,200,66,0.15)' }}>
                   <div className="flex justify-between items-start mb-3">
@@ -523,28 +493,28 @@ export default function LandingPage() {
         {/* ═══════════════════════════════════════ TESTIMONIALS ═══════════════════════════════════════ */}
         <div className="max-w-5xl mx-auto px-5 py-24">
           <div className="text-center mb-16">
-            <span className="section-label">Real results</span>
-            <h2 className="text-3xl md:text-5xl font-black mb-4">They Were Exactly Where You Are</h2>
-            <p className="text-xl text-gray-500 mb-8">Then they did something about it.</p>
+            <span className="section-label">{t.resultsLabel}</span>
+            <h2 className="text-3xl md:text-5xl font-black mb-4">{t.resultsH2}</h2>
+            <p className="text-xl text-gray-500 mb-8">{t.resultsP}</p>
             <div className="flex justify-center gap-8 text-sm text-gray-500">
-              <span>✓ 47,000+ students</span>
-              <span>✓ 127 countries</span>
-              <span>✓ 172,000+ training hours logged</span>
+              <span>✓ {t.resultsStat1}</span>
+              <span>✓ {t.resultsStat2}</span>
+              <span>✓ {t.resultsStat3}</span>
             </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {testimonials.map((t, i) => (
+            {testimonials.map((tItem, i) => (
               <div key={i} className="testimonial-card">
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, s) => <span key={s} className="text-yellow-400 text-lg">★</span>)}
                 </div>
-                <p className="text-gray-300 leading-relaxed mb-6 italic">"{t.text}"</p>
+                <p className="text-gray-300 leading-relaxed mb-6 italic">"{tItem.text}"</p>
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">{t.emoji}</span>
+                  <span className="text-2xl">{tItem.emoji}</span>
                   <div>
-                    <p className="font-bold">{t.name}</p>
-                    <p className="text-xs text-green-400 font-semibold">{t.location} · Results in {t.time}</p>
+                    <p className="font-bold">{tItem.name}</p>
+                    <p className="text-xs text-green-400 font-semibold">{tItem.location}</p>
                   </div>
                 </div>
               </div>
@@ -557,10 +527,10 @@ export default function LandingPage() {
               {[...Array(5)].map((_, s) => <span key={s} className="text-yellow-400 text-2xl">★</span>)}
             </div>
             <p className="text-2xl md:text-3xl font-bold text-white mb-6 leading-relaxed max-w-3xl mx-auto">
-              "I used to rewatch the same Voice performances over and over, wishing that could be me. Three weeks after this blueprint, someone sent <em>me</em> a video asking how I did that."
+              {t.heroTestimonial}
             </p>
             <p className="font-black text-lg">Marcus T. 🇬🇧</p>
-            <p className="text-green-400 text-sm mt-1">From viewer to performer in 21 days</p>
+            <p className="text-green-400 text-sm mt-1">{t.heroTestimonialFrom}</p>
           </div>
         </div>
 
@@ -569,35 +539,35 @@ export default function LandingPage() {
         {/* ═══════════════════════════════════════ GUARANTEE ═══════════════════════════════════════ */}
         <div className="max-w-3xl mx-auto px-5 py-24 text-center">
           <div className="text-8xl mb-6">🛡️</div>
-          <span className="section-label">Zero risk</span>
+          <span className="section-label">{t.guaranteeLabel}</span>
           <h2 className="text-3xl md:text-5xl font-black mb-6">
-            Sing In 30 Days<br />Or <span className="gold-gradient">Pay Absolutely Nothing</span>
+            {t.guaranteeH2L1}<br />Or <span className="gold-gradient">{t.guaranteeH2Highlight}</span>
           </h2>
           <p className="text-xl text-gray-400 leading-relaxed mb-8 max-w-2xl mx-auto">
-            Follow the blueprint for 30 days. Do the exercises. If you don't hear a dramatic, undeniable improvement in your voice — email us once and you get every cent back. No questions, no forms, no waiting.
+            {t.guaranteeP}
           </p>
           <div className="p-8 rounded-2xl" style={{ background: '#0d0d0d', border: '1px solid #1e1e1e' }}>
-            <p className="text-2xl font-black text-white mb-2">We take all the risk. You take all the results.</p>
-            <p className="text-gray-500">That's how confident we are this works — because it does.</p>
+            <p className="text-2xl font-black text-white mb-2">{t.guaranteeBox1}</p>
+            <p className="text-gray-500">{t.guaranteeBox2}</p>
           </div>
         </div>
 
         {/* ═══════════════════════════════════════ URGENCY ═══════════════════════════════════════ */}
         <div className="py-16" style={{ background: 'linear-gradient(135deg, #0d0500, #080808)' }}>
           <div className="max-w-4xl mx-auto px-5 text-center">
-            <h2 className="text-3xl md:text-4xl font-black mb-4 text-red-400">⚠️ This Price Is Temporary</h2>
-            <p className="text-gray-400 mb-8">We launched at a deep discount to collect success stories. Once we have enough, the price goes up — permanently.</p>
+            <h2 className="text-3xl md:text-4xl font-black mb-4 text-red-400">⚠️ {t.urgencyH2}</h2>
+            <p className="text-gray-400 mb-8">{t.urgencyP}</p>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="p-8 rounded-2xl" style={{ background: '#0d0d0d', border: '2px solid rgba(255,61,61,0.3)' }}>
-                <p className="text-gray-500 text-sm mb-2">Timer expires in</p>
+                <p className="text-gray-500 text-sm mb-2">{t.urgencyTimerLabel}</p>
                 <div className="timer-box inline-block mb-3">{timeString}</div>
-                <p className="text-gray-400 text-sm">Price jumps to $79.90 when this hits zero.</p>
+                <p className="text-gray-400 text-sm">{t.urgencyTimerDesc}</p>
               </div>
               <div className="p-8 rounded-2xl" style={{ background: '#0d0d0d', border: '2px solid rgba(255,61,61,0.3)' }}>
-                <p className="text-gray-500 text-sm mb-2">Spots at launch price</p>
+                <p className="text-gray-500 text-sm mb-2">{t.urgencySpotsLabel}</p>
                 <p className="text-5xl font-black text-red-400 mb-3">{spotsLeft}</p>
                 <div className="progress-bar mb-2"><div className="progress-fill" /></div>
-                <p className="text-gray-400 text-sm">Enrollment capped to ensure quality support.</p>
+                <p className="text-gray-400 text-sm">{t.urgencySpotsDesc}</p>
               </div>
             </div>
           </div>
@@ -609,27 +579,27 @@ export default function LandingPage() {
             <div className="rounded-3xl overflow-hidden glow-gold" style={{ background: 'linear-gradient(135deg, #0d0a00, #080808)', border: '2px solid rgba(245,200,66,0.4)' }}>
               {/* Price header */}
               <div className="p-8 md:p-12 text-center" style={{ borderBottom: '1px solid rgba(245,200,66,0.15)' }}>
-                <p className="text-xs font-bold uppercase tracking-widest text-yellow-400 mb-4 pulse">⚠️ Launch Price — Ends In {timeString}</p>
-                <h2 className="text-3xl md:text-4xl font-black mb-6">Voice Mastery Blueprint</h2>
+                <p className="text-xs font-bold uppercase tracking-widest text-yellow-400 mb-4 pulse">⚠️ {interpolate(t.pricingLabel, { timer: timeString })}</p>
+                <h2 className="text-3xl md:text-4xl font-black mb-6">{t.pricingH2}</h2>
                 <div className="flex items-end justify-center gap-4 mb-2">
-                  <span className="text-gray-600 text-2xl line-through">$79.90</span>
+                  <span className="text-gray-600 text-2xl line-through">{t.pricingOld}</span>
                   <span className="text-6xl md:text-7xl font-black gold-gradient">$29.90</span>
                 </div>
-                <span className="inline-block bg-red-600 text-white text-sm font-black px-4 py-1 rounded-full mt-2">SAVE 63% — TODAY ONLY</span>
+                <span className="inline-block bg-red-600 text-white text-sm font-black px-4 py-1 rounded-full mt-2">{t.pricingSave}</span>
               </div>
 
               {/* What you get */}
               <div className="p-8 md:p-12">
-                <p className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-6">Everything included</p>
+                <p className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-6">{t.pricingIncluded}</p>
                 <div className="space-y-4 mb-10">
                   {[
-                    ["Complete 4-Module Vocal Training System", "($199 value)"],
-                    ["Pitch Perfect System — Hit Every Note", "($89 value)"],
-                    ["Performance Confidence Training", "($69 value)"],
-                    ["BONUS: The Voice Song Vault (50 songs)", "($49 value)"],
-                    ["BONUS: 21-Day Transformation Challenge", "($39 value)"],
-                    ["Lifetime Access — Pay Once, Learn Forever", "($∞ value)"],
-                    ["30-Day Sing-or-Free Money-Back Guarantee", "Priceless"],
+                    [t.pricing1, t.pricing1Val],
+                    [t.pricing2, t.pricing2Val],
+                    [t.pricing3, t.pricing3Val],
+                    [t.pricing4, t.pricing4Val],
+                    [t.pricing5, t.pricing5Val],
+                    [t.pricing6, t.pricing6Val],
+                    [t.pricing7, t.pricing7Val],
                   ].map(([label, val]) => (
                     <div key={label} className="flex items-center justify-between gap-4">
                       <div className="flex items-center gap-3">
@@ -645,24 +615,24 @@ export default function LandingPage() {
                   onClick={handlePurchase}
                   className="btn-gold w-full text-2xl md:text-3xl font-black py-7 px-8 rounded-2xl block mb-5 pulse"
                 >
-                  🎤 Start My Transformation — $29.90 →
+                  🎤 {t.pricingCta}
                 </button>
 
                 <div className="text-center space-y-2">
-                  <p className="text-gray-500 text-sm">🔒 Secure checkout · Instant access · 30-day guarantee</p>
-                  <p className="text-gray-600 text-xs">One payment. No subscription. No hidden fees.</p>
+                  <p className="text-gray-500 text-sm">🔒 {t.pricingSecure}</p>
+                  <p className="text-gray-600 text-xs">{t.pricingNoSub}</p>
                 </div>
               </div>
 
               {/* Cards */}
               <div className="px-8 md:px-12 pb-8 text-center">
-                <p className="text-gray-700 text-xs mb-3">Accepted worldwide</p>
+                <p className="text-gray-700 text-xs mb-3">{t.pricingAccepted}</p>
                 <div className="flex justify-center gap-4 text-gray-600 text-sm">
-                  <span>💳 Visa</span>
-                  <span>💳 Mastercard</span>
-                  <span>💳 Amex</span>
-                  <span>💰 Apple Pay</span>
-                  <span>💰 PayPal</span>
+                  <span>💳 {t.pricingVisa}</span>
+                  <span>💳 {t.pricingMastercard}</span>
+                  <span>💳 {t.pricingAmex}</span>
+                  <span>💰 {t.pricingApple}</span>
+                  <span>💰 {t.pricingPaypal}</span>
                 </div>
               </div>
             </div>
@@ -674,40 +644,40 @@ export default function LandingPage() {
           <div className="max-w-4xl mx-auto px-5">
             <p className="text-5xl mb-8">🎤</p>
             <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
-              The Voice You've Always Wanted<br />Is <span className="gold-gradient">One Decision Away</span>
+              {t.finalH2L1}<br />Is <span className="gold-gradient">{t.finalH2Highlight}</span>
             </h2>
             <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-              30 days from today, you could be the person others watch and wonder about. Or you could still be watching. The only difference is what you decide right now.
+              {t.finalP}
             </p>
             <button
               onClick={handlePurchase}
               className="btn-gold text-2xl md:text-3xl font-black py-8 px-16 rounded-2xl inline-block pulse mb-6"
             >
-              Yes — I Choose To Become The Singer →
+              {t.finalCta}
             </button>
             <div className="flex flex-wrap justify-center gap-6 text-gray-600 text-sm">
-              <span>🔒 Secure payment</span>
-              <span>⚡ Instant access</span>
-              <span>🛡️ 30-day guarantee</span>
-              <span>🌍 Available worldwide</span>
+              <span>🔒 {t.finalSecure}</span>
+              <span>⚡ {t.finalInstant}</span>
+              <span>🛡️ {t.finalGuarantee}</span>
+              <span>🌍 {t.finalWorldwide}</span>
             </div>
-            <p className="text-red-400 font-bold mt-8">⏰ {spotsLeft} spots remaining at $29.90 · Timer: {timeString}</p>
+            <p className="text-red-400 font-bold mt-8">⏰ {interpolate(t.finalSpots, { spots: String(spotsLeft), timer: timeString })}</p>
           </div>
         </div>
 
         {/* ═══════════════════════════════════════ FAQ ═══════════════════════════════════════ */}
         <div className="py-20" style={{ borderTop: '1px solid #111' }}>
           <div className="max-w-3xl mx-auto px-5">
-            <h2 className="text-3xl md:text-4xl font-black text-center mb-12">Questions</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-center mb-12">{t.faqH2}</h2>
             <div className="space-y-4">
               {[
-                ["I've never sung before. Will this work for me?", "Yes — and you might actually have an advantage. 73% of our students had zero prior experience. The blueprint starts from absolute zero and builds up systematically. If you can speak, you can learn to sing. It's physiology, not magic."],
-                ["How fast will I actually see results?", "Most students notice a clear difference in week 1. By day 21, the transformation is obvious to everyone around them. And because you get lifetime access, there's zero pressure — go at whatever pace works for you."],
-                ["Is this a subscription? Are there hidden charges?", "No subscription. No recurring charges. No upsells at checkout. $29.90, one time, lifetime access. That's the whole thing."],
-                ["I'm 'tone deaf.' Can this still help me?", "Almost certainly yes. True tone-deafness affects less than 2% of people. What most people call 'tone deaf' is simply untrained pitch perception — which Module 2 corrects directly. We've seen hundreds of self-described 'tone deaf' students prove themselves completely wrong."],
-                ["Do I need special equipment or a studio?", "Nothing. Just your voice. You can do every exercise from your bedroom. All you need is a phone or laptop to access the videos."],
-                ["What if it doesn't work for me?", "Email us once within 30 days. We refund you immediately. No questions, no forms. You take zero risk — all of it is on us."],
-                ["Will the price really go up?", "Yes. This is a launch discount to collect success stories. When the timer hits zero, the price increases to $79.90 and stays there. This is the only time you'll see $29.90."],
+                [t.faq1Q, t.faq1A],
+                [t.faq2Q, t.faq2A],
+                [t.faq3Q, t.faq3A],
+                [t.faq4Q, t.faq4A],
+                [t.faq5Q, t.faq5A],
+                [t.faq6Q, t.faq6A],
+                [t.faq7Q, t.faq7A],
               ].map(([q, a]) => (
                 <div key={q} className="card p-6 md:p-8">
                   <h3 className="text-lg font-bold mb-3">{q}</h3>
@@ -721,19 +691,19 @@ export default function LandingPage() {
         {/* FOOTER */}
         <div className="py-12 text-center" style={{ borderTop: '1px solid #111' }}>
           <div className="max-w-4xl mx-auto px-5">
-            <p className="text-gray-700 text-sm mb-2">© 2025 Voice Mastery Blueprint. All Rights Reserved.</p>
-            <p className="text-gray-800 text-xs mb-1">This product is not affiliated with The Voice television show or its producers.</p>
-            <p className="text-gray-800 text-xs mb-4">Individual results vary. Consistent practice and effort are required.</p>
+            <p className="text-gray-700 text-sm mb-2">{t.footerCopy}</p>
+            <p className="text-gray-800 text-xs mb-1">{t.footerDisclaimer1}</p>
+            <p className="text-gray-800 text-xs mb-4">{t.footerDisclaimer2}</p>
             <div className="flex justify-center gap-6 text-gray-700 text-sm">
-              <a href="#" className="hover:text-gray-400 transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-gray-400 transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-gray-400 transition-colors">Contact</a>
+              <a href="#" className="hover:text-gray-400 transition-colors">{t.footerPrivacy}</a>
+              <a href="#" className="hover:text-gray-400 transition-colors">{t.footerTerms}</a>
+              <a href="#" className="hover:text-gray-400 transition-colors">{t.footerContact}</a>
             </div>
           </div>
         </div>
       </div>
 
-    
+
     </div>
   );
 }
