@@ -1142,7 +1142,7 @@ export default function CoursePage() {
           border-bottom: 1px solid var(--border);
           display: flex; align-items: center; padding: 0 20px; gap: 16px;
         }
-        .vmb-header-logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 17px; letter-spacing: -0.3px; }
+        .vmb-header-logo { display: flex; align-items: center; gap: 10px; font-family: Arial; font-weight: 800; font-size: 17px; letter-spacing: -0.3px; }
         .vmb-header-logo-icon { width: 34px; height: 34px; border-radius: 8px; background: linear-gradient(135deg, var(--green), var(--blue)); display: flex; align-items: center; justify-content: center; font-size: 16px; }
         .vmb-header-progress { flex: 1; display: flex; align-items: center; gap: 12px; }
         .vmb-progress-bar-wrap { flex: 1; height: 5px; background: var(--bg4); border-radius: 99px; overflow: hidden; max-width: 300px; }
@@ -1214,7 +1214,7 @@ export default function CoursePage() {
         .vmb-lesson-breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
         .vmb-module-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 99px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
         .vmb-lesson-number { font-size: 12px; color: var(--text3); }
-        .vmb-lesson-title { font-family: var(--font-display); font-size: clamp(22px, 4vw, 34px); font-weight: 800; color: var(--text); line-height: 1.15; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .vmb-lesson-title { font-family: Arial; font-size: clamp(22px, 4vw, 34px); font-weight: 800; color: var(--text); line-height: 1.15; margin-bottom: 8px; letter-spacing: -0.5px; }
         .vmb-lesson-subtitle { font-size: 16px; color: var(--text2); margin-bottom: 16px; }
         .vmb-lesson-meta { display: flex; align-items: center; gap: 16px; }
         .vmb-meta-chip { display: flex; align-items: center; gap: 6px; padding: 5px 12px; background: var(--bg3); border: 1px solid var(--border); border-radius: 99px; font-size: 12px; color: var(--text2); }
@@ -1227,14 +1227,14 @@ export default function CoursePage() {
 
         /* ── LESSON CONTENT ── */
         .vmb-lesson-body { color: var(--text); }
-        .vmb-lesson-body h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text); margin: 28px 0 10px; }
+        .vmb-lesson-body h3 { font-family: Arial; font-size: 20px; font-weight: 700; color: var(--text); margin: 28px 0 10px; }
         .vmb-lesson-body h4 { font-size: 15px; font-weight: 600; color: var(--green); margin: 20px 0 8px; }
         .vmb-lesson-body p { margin-bottom: 14px; line-height: 1.75; color: var(--text2); }
         .vmb-lesson-body strong { color: var(--text); font-weight: 600; }
 
         /* ── KEY TAKEAWAYS ── */
         .vmb-takeaways { background: linear-gradient(135deg, rgba(16,185,129,0.07), rgba(59,130,246,0.05)); border: 1px solid rgba(16,185,129,0.2); border-radius: var(--radius); padding: 20px 24px; margin: 24px 0; }
-        .vmb-takeaways-title { font-family: var(--font-display); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--green); margin-bottom: 12px; }
+        .vmb-takeaways-title { font-family: Arial; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--green); margin-bottom: 12px; }
         .vmb-takeaway-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; font-size: 14px; color: var(--text2); }
         .vmb-takeaway-dot { width: 18px; height: 18px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; color: white; }
 
@@ -1246,7 +1246,7 @@ export default function CoursePage() {
         /* ── EXERCISES ── */
         .vmb-exercise-card { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin-bottom: 16px; }
         .vmb-exercise-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
-        .vmb-exercise-name { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text); }
+        .vmb-exercise-name { font-family: Arial; font-size: 16px; font-weight: 700; color: var(--text); }
         .vmb-exercise-duration { font-size: 12px; color: var(--amber); background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2); padding: 3px 10px; border-radius: 99px; white-space: nowrap; font-weight: 600; flex-shrink: 0; }
         .vmb-exercise-desc { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 14px; }
         .vmb-exercise-tip { background: var(--bg4); border-radius: var(--radius-sm); padding: 12px 16px; font-size: 13px; color: var(--text3); border-left: 3px solid var(--blue); }
@@ -1267,7 +1267,7 @@ export default function CoursePage() {
         .vmb-nav-prev, .vmb-nav-next { display: flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg3); color: var(--text2); cursor: pointer; font-family: var(--font-body); font-size: 14px; font-weight: 500; transition: all 0.2s; }
         .vmb-nav-prev:hover, .vmb-nav-next:hover { border-color: var(--border2); color: var(--text); background: var(--bg4); }
         .vmb-nav-prev:disabled, .vmb-nav-next:disabled { opacity: 0.3; cursor: not-allowed; }
-        .vmb-complete-btn { padding: 12px 28px; border-radius: var(--radius-sm); border: none; background: linear-gradient(135deg, var(--green), #059669); color: white; font-family: var(--font-display); font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+        .vmb-complete-btn { padding: 12px 28px; border-radius: var(--radius-sm); border: none; background: linear-gradient(135deg, var(--green), #059669); color: white; font-family: Arial; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
         .vmb-complete-btn.done { background: linear-gradient(135deg, #065f46, #047857); }
         .vmb-complete-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(16,185,129,0.3); }
 
@@ -1285,7 +1285,7 @@ export default function CoursePage() {
         .vmb-vault-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
         .vmb-vault-card { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; transition: all 0.2s; }
         .vmb-vault-card:hover { border-color: var(--border2); background: var(--bg4); transform: translateY(-2px); }
-        .vmb-vault-title { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--text); margin-bottom: 3px; }
+        .vmb-vault-title { font-family: Arial; font-weight: 700; font-size: 15px; color: var(--text); margin-bottom: 3px; }
         .vmb-vault-artist { font-size: 12px; color: var(--text3); margin-bottom: 10px; }
         .vmb-vault-technique { font-size: 13px; color: var(--text2); line-height: 1.5; margin-bottom: 10px; }
         .vmb-vault-tags { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -1298,30 +1298,30 @@ export default function CoursePage() {
         /* ── CHALLENGE ── */
         .vmb-challenge-week { margin-bottom: 36px; }
         .vmb-week-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-        .vmb-week-badge { padding: 6px 16px; border-radius: 99px; font-family: var(--font-display); font-size: 13px; font-weight: 700; }
+        .vmb-week-badge { padding: 6px 16px; border-radius: 99px; font-family: Arial; font-size: 13px; font-weight: 700; }
         .week-1 { background: rgba(16,185,129,0.15); color: var(--green); border: 1px solid rgba(16,185,129,0.25); }
         .week-2 { background: rgba(59,130,246,0.15); color: var(--blue); border: 1px solid rgba(59,130,246,0.25); }
         .week-3 { background: rgba(139,92,246,0.15); color: var(--purple); border: 1px solid rgba(139,92,246,0.25); }
-        .vmb-week-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text); }
+        .vmb-week-title { font-family: Arial; font-size: 18px; font-weight: 700; color: var(--text); }
         .vmb-day-card { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 10px; display: flex; gap: 16px; }
         .vmb-day-card.special { background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(59,130,246,0.08)); border-color: rgba(139,92,246,0.3); }
-        .vmb-day-num { width: 42px; height: 42px; border-radius: 50%; background: var(--bg4); border: 2px solid var(--border2); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 16px; color: var(--text2); flex-shrink: 0; }
+        .vmb-day-num { width: 42px; height: 42px; border-radius: 50%; background: var(--bg4); border: 2px solid var(--border2); display: flex; align-items: center; justify-content: center; font-family: Arial; font-weight: 800; font-size: 16px; color: var(--text2); flex-shrink: 0; }
         .vmb-day-card.special .vmb-day-num { background: linear-gradient(135deg, var(--purple), var(--blue)); border: none; color: white; }
         .vmb-day-info { flex: 1; }
-        .vmb-day-focus { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--text); margin-bottom: 6px; }
+        .vmb-day-focus { font-family: Arial; font-weight: 700; font-size: 15px; color: var(--text); margin-bottom: 6px; }
         .vmb-day-detail { font-size: 13px; color: var(--text2); line-height: 1.6; }
         .vmb-day-modules { display: flex; gap: 4px; margin-top: 8px; flex-wrap: wrap; }
         .vmb-day-module { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 99px; background: var(--bg4); color: var(--text3); border: 1px solid var(--border); }
 
         /* ── SECTION HEADER ── */
         .vmb-section-header { margin-bottom: 28px; }
-        .vmb-section-title { font-family: var(--font-display); font-size: clamp(24px, 4vw, 36px); font-weight: 800; color: var(--text); margin-bottom: 8px; letter-spacing: -0.5px; }
+        .vmb-section-title { font-family: Arial; font-size: clamp(24px, 4vw, 36px); font-weight: 800; color: var(--text); margin-bottom: 8px; letter-spacing: -0.5px; }
         .vmb-section-sub { font-size: 16px; color: var(--text2); }
 
         /* ── STATS ROW ── */
         .vmb-stats { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
         .vmb-stat { flex: 1; min-width: 120px; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; text-align: center; }
-        .vmb-stat-num { font-family: var(--font-display); font-size: 28px; font-weight: 800; }
+        .vmb-stat-num { font-family: Arial; font-size: 28px; font-weight: 800; }
         .vmb-stat-label { font-size: 12px; color: var(--text3); margin-top: 2px; }
 
         /* ── OVERLAY (mobile sidebar) ── */
@@ -1331,7 +1331,7 @@ export default function CoursePage() {
         .vmb-completion { background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(59,130,246,0.08)); border: 1px solid rgba(16,185,129,0.3); border-radius: var(--radius); padding: 20px 24px; margin-top: 20px; display: flex; align-items: center; gap: 16px; }
         .vmb-completion-icon { font-size: 32px; }
         .vmb-completion-text { }
-        .vmb-completion-title { font-family: var(--font-display); font-weight: 700; color: var(--green); margin-bottom: 4px; }
+        .vmb-completion-title { font-family: Arial; font-weight: 700; color: var(--green); margin-bottom: 4px; }
         .vmb-completion-sub { font-size: 13px; color: var(--text2); }
 
         /* ── RESPONSIVE ── */
