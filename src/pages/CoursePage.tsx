@@ -1360,7 +1360,7 @@ export default function CoursePage() {
             {sidebarOpen ? <IconClose /> : <IconMenu />}
           </button>
           <div className="vmb-header-logo">
-            <div className="vmb-header-logo-icon">🎤</div>
+            <div className="vmb-header-logo-icon"><img src="https://stripe-camo.global.ssl.fastly.net/a049a47e44536518b7f12ea72c04a62ecc30aecc5e3622b165d92fb34d18ffb1/68747470733a2f2f66696c65732e7374726970652e636f6d2f6c696e6b732f4d44423859574e6a644638785530527a546b4e4853315a74646b70696245566966475a7358327870646d5666547a5a555245787059585a4a526b73794e7a46724e6d5a52636c46714d444e5030307736426f7a356a53/6d65726368616e745f69643d616363745f315344734e43474b566d764a626c456226636c69656e743d5041594d454e545f50414745"/></div>
             <span>Voice Mastery Blueprint</span>
           </div>
           <div className="vmb-header-progress">
