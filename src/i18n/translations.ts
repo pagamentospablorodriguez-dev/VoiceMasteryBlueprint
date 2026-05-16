@@ -185,7 +185,7 @@ const en: TranslationStrings = {
   heroH1L2: "of Great Voices.",
   heroH1Highlight: "Now It's Your Turn.",
   heroSub: "The same vocal techniques behind the performances you can't stop rewatching —",
-  heroSubHighlight: "now compressed into a 21-day blueprint",
+  heroSubHighlight: "now compressed into a 21-day blueprint that works even if you've never sung a single note.",
   rating: "4.9/5 rating",
   results7days: "89% see results in 7 days",
   moneyBack: "30-day money-back guarantee",
