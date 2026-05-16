@@ -1143,7 +1143,8 @@ export default function CoursePage() {
           display: flex; align-items: center; padding: 0 20px; gap: 16px;
         }
         .vmb-header-logo { display: flex; align-items: center; gap: 10px; font-family: Arial; font-weight: 800; font-size: 17px; letter-spacing: -0.3px; }
-        .vmb-header-logo-icon { width: 34px; height: 34px; border-radius: 8px; background: linear-gradient(135deg, var(--green), var(--blue)); display: flex; align-items: center; justify-content: center; font-size: 16px; }
+        .vmb-header-logo-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+        .vmb-header-logo-icon img { border-radius: 8px;}
         .vmb-header-progress { flex: 1; display: flex; align-items: center; gap: 12px; }
         .vmb-progress-bar-wrap { flex: 1; height: 5px; background: var(--bg4); border-radius: 99px; overflow: hidden; max-width: 300px; }
         .vmb-progress-bar { height: 100%; background: linear-gradient(90deg, var(--green), var(--blue)); border-radius: 99px; transition: width 0.5s ease; }
