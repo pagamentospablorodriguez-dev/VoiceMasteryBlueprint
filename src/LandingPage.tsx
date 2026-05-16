@@ -581,8 +581,9 @@ export default function LandingPage() {
               <div className="p-8 md:p-12 text-center" style={{ borderBottom: '1px solid rgba(245,200,66,0.15)' }}>
                 <p className="text-xs font-bold uppercase tracking-widest text-yellow-400 mb-4 pulse">⚠️ {interpolate(t.pricingLabel, { timer: timeString })}</p>
                 <h2 className="text-3xl md:text-4xl font-black mb-6">{t.pricingH2}</h2>
-                <div className="flex items-end justify-center gap-4 mb-2">
+                <div className="items-end justify-center gap-4 mb-2">
                   <span className="text-gray-600 text-2xl line-through">{t.pricingOld}</span>
+                  <br/>
                   <span className="text-6xl md:text-7xl font-black gold-gradient">$29.90</span>
                 </div>
                 <span className="inline-block bg-red-600 text-white text-sm font-black px-4 py-1 rounded-full mt-2">{t.pricingSave}</span>
