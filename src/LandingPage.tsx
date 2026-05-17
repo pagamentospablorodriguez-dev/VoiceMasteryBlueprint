@@ -541,7 +541,7 @@ export default function LandingPage() {
           <div className="text-8xl mb-6">🛡️</div>
           <span className="section-label">{t.guaranteeLabel}</span>
           <h2 className="text-3xl md:text-5xl font-black mb-6">
-            {t.guaranteeH2L1}<br />Or <span className="gold-gradient">{t.guaranteeH2Highlight}</span>
+            {t.guaranteeH2L1}<br /><span className="gold-gradient">{t.guaranteeH2Highlight}</span>
           </h2>
           <p className="text-xl text-gray-400 leading-relaxed mb-8 max-w-2xl mx-auto">
             {t.guaranteeP}
