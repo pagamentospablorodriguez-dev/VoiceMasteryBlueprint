@@ -645,7 +645,7 @@ export default function LandingPage() {
           <div className="max-w-4xl mx-auto px-5">
             <p className="text-5xl mb-8">🎤</p>
             <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
-              {t.finalH2L1}<br />Is <span className="gold-gradient">{t.finalH2Highlight}</span>
+              {t.finalH2L1}<br /><span className="gold-gradient">{t.finalH2Highlight}</span>
             </h2>
             <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
               {t.finalP}
