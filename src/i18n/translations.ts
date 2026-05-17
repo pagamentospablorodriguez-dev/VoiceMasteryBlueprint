@@ -889,7 +889,7 @@ const es: TranslationStrings = {
   heroH1L2: "de Grandes Voces.",
   heroH1Highlight: "Ahora Es Tu Turno.",
   heroSub: "Las mismas técnicas vocales detrás de las presentaciones que no dejas de ver —",
-  heroSubHighlight: "agora comprimidas en un plan de 21 días que funciona incluso si nunca has cantado una nota.",
+  heroSubHighlight: "ahora comprimidas en un plan de 21 días que funciona incluso si nunca has cantado una nota.",
   rating: "4.9/5 de valoración",
   results7days: "89% ven resultados en 7 días",
   moneyBack: "30 días de garantía de devolución",
